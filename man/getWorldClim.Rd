@@ -10,10 +10,7 @@ getWorldClim(res, country, path)
 \item{res}{numeric, resolution of the data. Possible values are 10, 5, 2.5,
 or 0.5 arc minutes.}
 
-\item{country, }{character, country name.}
-
-\item{path, }{character, the path to the folder wherer the variables shall
-be saved}
+\item{country}{character, country name.}
 }
 \value{
 This function downloads all 19 climatic variables and returns them
