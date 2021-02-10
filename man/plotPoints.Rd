@@ -7,17 +7,14 @@
 plotPoints(
   occ,
   location = "location",
-  lon = "lon",
-  lat = "lat",
+  lon = "decimalLongitude",
+  lat = "decimalLatitude",
   colours = "standard"
 )
 }
 \arguments{
 \item{occ}{table containing columns with the species name, longitude, and
 latitude}
-
-\item{location}{character, name of the column containing location IDs,
-default is "location".}
 
 \item{lon}{character, name of the longitude column, default is
 "decimalLongitude".}
@@ -27,15 +24,13 @@ default is "location".}
 
 \item{colours}{character, options are "bicha" or "standard". Default is
 "standard"}
+
+\item{species}{character, name of the column containing species binomial
+name. Default is "species".}
 }
 \value{
-This function downloads all 19 climatic variables and returns them
-in a raster stack.
+This function plots occurrences on a background.
 }
 \description{
 Plot occurrence points with background for visualisation.
-}
-\examples{
-worldclim <- getWorldClim(res = 0.5,country = "Czech Republic",
-path = getwd())
 }

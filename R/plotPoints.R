@@ -43,8 +43,8 @@ plotPoints <- function(occ,location="location",
          main = unique(occ_sp$species), font.main = 3)
     points(occ_sp, pch = 21, cex = 1, bg = "red")
   }else{
-    plot(map, col = "magenta", bg = "white",
+    plot(map, col = "magenta", bg = "cyan",
          main = unique(occ_sp$species), font.main = 3)
-    points(occ_sp, pch = 21, cex = 1, bg = "cyan")
+    points(occ_sp, pch = 21, cex = 1, bg = "yellow")
   }
 }
