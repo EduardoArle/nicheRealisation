@@ -4,17 +4,22 @@
 \alias{getWorldClim}
 \title{getWorldClim}
 \usage{
-getWorldClim(res, country, path)
+getWorldClim(res, country = NULL, path)
 }
 \arguments{
 \item{res}{numeric, resolution of the data. Possible values are 10, 5, 2.5,
-or 0.5 arc minutes.}
+or 0.5 arc minutes. If res = 0.5, country must be specified.}
 
-\item{country}{character, country name.}
+\item{country}{character, country name. Sets the tile containing the central
+coordinates of the defined country. If NULL, gets variable for whole world.
+Default is NULL.}
+
+\item{path}{character, the path to the folder where the variables shall
+be saved.}
 }
 \value{
-This function downloads all 19 climatic variables and returns them
-in a raster stack.
+This function downloads all 19 climatic variables and saves them in
+the folder defined in "path".
 }
 \description{
 Downloads bioclimatic data from WorldClim
