@@ -21,8 +21,10 @@ extractValues <- function(path,occ,location="species",
   t <- giveOcc(occ,location,lon,lat)
   t2 <- occSpatialPoints(t)
   
+  oldwd <- getwd()
   setwd(path)
   variables <- stack(list.files(pattern = ".bil$"))
+  setwd(oldwd)
   
   values <- extract(variables,t2)
   table <- cbind(t,values)
