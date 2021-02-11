@@ -3,7 +3,7 @@
 #' Tests of the environmental variable importance for a given species based on
 #' Maxent algorithm.
 #'
-#' @importFrom dismo kfold maxent
+#' @importFrom dismo maxent
 #' @importFrom raster stack
 #' @param occ table containing columns with the species name, longitude, and
 #' latitude.
@@ -16,11 +16,6 @@ variableContribution <- function(occ,path){
   occ2 <- occ[,c("decimalLongitude","decimalLatitude")]
   names(occ2) <- c("lon","lat")
                             
-  #separate data into train and test
-  fold <- kfold(occ2, k=5)
-  occtrain <- occ2[fold != 1, ]
-  occtest <- occ2[fold == 1, ]
-                            
   #load variables
   oldwd <- getwd()
   setwd(path)
@@ -28,7 +23,8 @@ variableContribution <- function(occ,path){
   setwd(oldwd)
                             
   #run maxent model
-  me <- maxent(predictors, occtrain) 
+  maxent()
+  me <- maxent(predictors, occ2) 
                             
   #obtain and organise variable importance
   var_imp <- plot(me)
