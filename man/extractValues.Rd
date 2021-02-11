@@ -13,10 +13,10 @@ extractValues(
 )
 }
 \arguments{
-\item{path}{character, the path to the folder containing the variables}
+\item{path}{character, the path to the folder containing the variables.}
 
 \item{occ}{table containing columns with the species name, longitude, and
-latitude}
+latitude.}
 
 \item{location}{character, name of the column containing location IDs,
 default is "species".}
