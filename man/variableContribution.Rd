@@ -4,13 +4,15 @@
 \alias{variableContribution}
 \title{variableContribution}
 \usage{
-variableContribution(occ, path)
+variableContribution(occ, path, corel)
 }
 \arguments{
 \item{occ}{table containing columns with the species name, longitude, and
 latitude.}
 
 \item{path}{character, the path to the folder containing the variables.}
+
+\item{corel}{table, output of the function \strong{variableCorrelation}.}
 }
 \value{
 This function return a table informing the contribution of each

@@ -8,10 +8,11 @@
 #' @param occ table containing columns with the species name, longitude, and
 #' latitude.
 #' @param path character, the path to the folder containing the variables.
+#' @param corel table, output of the function **variableCorrelation**.
 #' @return This function return a table informing the contribution of each
 #' variable in a maxent model.
 #' @export
-variableContribution <- function(occ,path){
+variableContribution <- function(occ,path,corel){
   #select lon and lat columns and standardise names for maxent
   occ2 <- occ[,c("decimalLongitude","decimalLatitude")]
   names(occ2) <- c("lon","lat")
@@ -19,8 +20,11 @@ variableContribution <- function(occ,path){
   #load variables
   oldwd <- getwd()
   setwd(path)
-  predictors <- stack(list.files(pattern = ".bil$"))
+  vars <- stack(list.files(pattern = ".bil$"))
   setwd(oldwd)
+  
+  #select variables that are not more correlated than 0.7
+  predictors <- vars[[which(names(vars) %in% corel$Variables)]]
                             
   #run maxent model
   maxent()
