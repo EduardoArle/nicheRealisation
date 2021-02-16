@@ -4,20 +4,18 @@
 \alias{nicheBreadth}
 \title{nicheBreadth}
 \usage{
-nicheBreadth(occ, path, var_cont)
+nicheBreadth(occ, vars2)
 }
 \arguments{
 \item{occ}{table containing columns with the species name, longitude, and
 latitude.}
 
-\item{path}{character, the path to the folder containing the variables.}
-
-\item{var_cont}{table informing the contribution of each variable in a
-maxent model, the output of \strong{variableContribution}.}
+\item{vars2}{raster stack containing the variables that contributed most to
+the model. The output of \strong{variablePreparation}.}
 }
 \value{
-This function return a table informing which variables are less
-correlated than the defined threshold.
+This function returns the niche breadth calculated based on the
+variables' values in the occ locations.
 }
 \description{
 Calculate the n-dimensional niche breadth based on point records and

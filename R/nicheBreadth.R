@@ -4,22 +4,27 @@
 #' environmental layers.
 #'
 #' @importFrom bRacatus occSpatialPoints
-#' @importFrom raster extract stack
+#' @importFrom raster extract
 #' @param occ table containing columns with the species name, longitude, and
 #' latitude.
-#' @param path character, the path to the folder containing the variables.
-#' @param var_cont table informing the contribution of each variable in a
-#'maxent model, the output of **variableContribution**.
-#' @return This function return a table informing which variables are less
-#' correlated than the defined threshold.
+#' @param vars2 raster stack containing the variables that contributed most to 
+#' the model. The output of **variablePreparation**.
+#' @return This function returns the niche breadth calculated based on the 
+#' variables' values in the occ locations.
 #' @export
-nicheBreadth <- function(occ,path,var_cont){
+nicheBreadth <- function(occ,vars2){
   #get values of all variables in the occurrence points locations
-  vars <- extractValues(path,occ)
-  vars2 <- vars[,-which(names(vars) %in% names(occ))]
-  vars3 <- vars2[-which(is.na(vars2)),]
+  occ2 <- occSpatialPoints(occ)
   
-  corel <- vifcor(vars3,th=0.7)
+  values <- as.data.frame(extract(vars2,occ2))
   
-  return(corel@results)
+  #calculate amplitude of each variable
+  
+  amp <- numeric()
+  for(i in 1:ncol(values))
+  {
+    amp[i] <- abs(max(values[,i],na.rm=T)-min(values[,i],na.rm=T))
+  }
+  n_breadth <- prod(amp)
+  return(n_breadth)
 }
