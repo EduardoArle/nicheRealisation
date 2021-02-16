@@ -1,0 +1,35 @@
+#' natAlPoints
+#' 
+#' Identifies native and alien points based on overlap with regions in 
+#' checklists.
+#'
+#' @importFrom bRacatus occSpatialPoints
+#' @param occ able containing columns with the species name, longitude, and
+#' latitude.
+#' @param nat_al list containing reference region shapefiles for the native and
+#' alien distribution, having all alien regions overlapping native regions 
+#' eliminated. Output of function **noNatAlOverlap**
+#' @return list containing points overlapping the native regions, and those 
+#' overlapping the alien regions.
+#' @export
+natAlPoints <- function(occ,nat_al){
+  occ2 <- occSpatialPoints(occ)
+  
+  nat_pts <- over(occ2,nat_al$native)  #identify points in the native regions
+  nat_pts <- cbind(occ,nat_pts)
+  nat_pts <- nat_pts[which(!is.na(nat_pts$geo_entity)),]
+  
+  alien_pts <- over(occ2,nat_al$alien)  #identify points in the native regions
+  alien_pts <- cbind(occ,alien_pts)
+  alien_pts <- alien_pts[which(!is.na(alien_pts$geo_entity)),]
+  
+  if(length(eliminate) > 0){
+    alien2 <- alien[-eliminate,]
+  }else{
+    alien2 <- alien
+  }
+  
+  nat_alien_pts <- list(nat_pts,alien_pts)
+  names(nat_alien_pts) <- c("native","alien")
+  return(nat_alien_pts)
+}
