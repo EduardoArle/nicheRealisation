@@ -13,11 +13,14 @@
 #' @export
 variableCorrelation <- function(occ,path,th = 0.7){
   #get values of all variables in the occurrence points locations
-  vars <- extractValues(path,occ)
-  vars2 <- vars[,-which(names(vars) %in% names(occ))]
-  vars3 <- vars2[-which(is.na(vars2)),]
-  
-  corel <- vifcor(vars3,th=0.7)
+  vars <- extractValues(path, occ_clean)
+  vars2 <- vars[, -which(names(vars) %in% names(occ_clean))]
+  if(length(unique(which(is.na(vars2)))) != 0){
+    vars3 <- vars2[-is.na(vars2), ]
+  }else{
+    vars3 <- vars2
+  }
+  corel <- vifcor(vars3, th = 0.7)
   
   return(corel@results)
 }
