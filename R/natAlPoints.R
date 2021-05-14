@@ -23,12 +23,6 @@ natAlPoints <- function(occ,nat_al){
   alien_pts2 <- cbind(occ,alien_pts)
   alien_pts3 <- alien_pts2[which(!is.na(alien_pts[,1])),]
   
-  if(length(eliminate) > 0){
-    alien2 <- alien[-eliminate,]
-  }else{
-    alien2 <- alien
-  }
-  
   nat_alien_pts <- list(nat_pts,alien_pts)
   names(nat_alien_pts) <- c("native","alien")
   return(nat_alien_pts)
