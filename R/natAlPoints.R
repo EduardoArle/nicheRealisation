@@ -16,12 +16,12 @@ natAlPoints <- function(occ,nat_al){
   occ2 <- occSpatialPoints(occ)
   
   nat_pts <- over(occ2,nat_al$native)  #identify points in the native regions
-  nat_pts <- cbind(occ,nat_pts)
-  nat_pts <- nat_pts[which(!is.na(nat_pts$geo_entity)),]
+  nat_pts2 <- cbind(occ,nat_pts)
+  nat_pts3 <- nat_pts2[which(!is.na(nat_pts[,1])),]
   
   alien_pts <- over(occ2,nat_al$alien)  #identify points in the native regions
-  alien_pts <- cbind(occ,alien_pts)
-  alien_pts <- alien_pts[which(!is.na(alien_pts$geo_entity)),]
+  alien_pts2 <- cbind(occ,alien_pts)
+  alien_pts3 <- alien_pts2[which(!is.na(alien_pts[,1])),]
   
   if(length(eliminate) > 0){
     alien2 <- alien[-eliminate,]
