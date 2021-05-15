@@ -24,3 +24,4 @@ variableCorrelation <- function(occ,path,th = 0.7){
   
   return(corel@results)
 }
+g
