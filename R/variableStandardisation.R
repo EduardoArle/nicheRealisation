@@ -10,11 +10,11 @@
 #' variables shall be saved.
 #' @return This function standardises the variables and saves the new version.
 #' @export
-variableStandardisation <- function(original_path,new_path){
+variableStandardisation <- function(original_path, new_path, original_format = ".asc"){
   #get values of all variables in the occurrence points locations
   oldwd <- getwd()
   setwd(original_path)
-  variables <- stack(list.files(pattern = ".bil$"))
+  variables <- stack(list.files(pattern = original_format))
   
   for(i in 1:nlayers(variables))
   {
