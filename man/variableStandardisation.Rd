@@ -4,7 +4,7 @@
 \alias{variableStandardisation}
 \title{variableStandardisation}
 \usage{
-variableStandardisation(original_path, new_path)
+variableStandardisation(original_path, new_path, original_format = ".asc")
 }
 \arguments{
 \item{original_path}{character, the path to the folder containing the
@@ -12,6 +12,9 @@ variables.}
 
 \item{new_path}{character, the path to the folder where the standardised
 variables shall be saved.}
+
+\item{original_format}{character, indicates the format of the layers to be
+standardised.}
 }
 \value{
 This function standardises the variables and saves the new version.

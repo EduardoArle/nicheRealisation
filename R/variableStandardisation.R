@@ -8,6 +8,8 @@
 #' variables.
 #' @param new_path character, the path to the folder where the standardised
 #' variables shall be saved.
+#' @param original_format character, indicates the format of the layers to be 
+#' standardised.
 #' @return This function standardises the variables and saves the new version.
 #' @export
 variableStandardisation <- function(original_path, new_path, original_format = ".asc"){
