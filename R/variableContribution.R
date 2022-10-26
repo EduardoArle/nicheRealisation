@@ -9,10 +9,11 @@
 #' latitude.
 #' @param path character, the path to the folder containing the variables.
 #' @param corel table, output of the function **variableCorrelation**.
+#' @param original_format character, indicates the format of the layers.
 #' @return This function return a table informing the contribution of each
 #' variable in a maxent model.
 #' @export
-variableContribution <- function(occ,path,corel){
+variableContribution <- function(occ, path, corel, original_format = ".asc"){
   #select lon and lat columns and standardise names for maxent
   occ2 <- occ[,c("decimalLongitude","decimalLatitude")]
   names(occ2) <- c("lon","lat")
@@ -20,7 +21,7 @@ variableContribution <- function(occ,path,corel){
   #load variables
   oldwd <- getwd()
   setwd(path)
-  vars <- stack(list.files(pattern = ".bil$"))
+  vars <- stack(list.files(pattern = original_format))
   setwd(oldwd)
   
   #select variables that are not more correlated than 0.7

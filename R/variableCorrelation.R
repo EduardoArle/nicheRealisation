@@ -8,10 +8,11 @@
 #' latitude.
 #' @param path character, the path to the folder containing the variables.
 #' @param th threshold of correlation. Default is 0.7.
+#' @param original_format character, indicates the format of the layers.
 #' @return This function return a table informing which variables are less
 #' correlated than the defined threshold.
 #' @export
-variableCorrelation <- function(occ,path,th = 0.7){
+variableCorrelation <- function(occ, path, th = 0.7, original_format = ".asc"){
   #get values of all variables in the occurrence points locations
   vars <- extractValues(path, occ_clean)
   vars2 <- vars[, -which(names(vars) %in% names(occ_clean))]

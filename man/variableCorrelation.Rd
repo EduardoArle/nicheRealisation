@@ -4,7 +4,7 @@
 \alias{variableCorrelation}
 \title{variableCorrelation}
 \usage{
-variableCorrelation(occ, path, th = 0.7)
+variableCorrelation(occ, path, th = 0.7, original_format = ".asc")
 }
 \arguments{
 \item{occ}{table containing columns with the species name, longitude, and
@@ -13,6 +13,8 @@ latitude.}
 \item{path}{character, the path to the folder containing the variables.}
 
 \item{th}{threshold of correlation. Default is 0.7.}
+
+\item{original_format}{character, indicates the format of the layers.}
 }
 \value{
 This function return a table informing which variables are less

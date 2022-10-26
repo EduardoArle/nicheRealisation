@@ -4,7 +4,7 @@
 \alias{variableContribution}
 \title{variableContribution}
 \usage{
-variableContribution(occ, path, corel)
+variableContribution(occ, path, corel, original_format = ".asc")
 }
 \arguments{
 \item{occ}{table containing columns with the species name, longitude, and
@@ -13,6 +13,8 @@ latitude.}
 \item{path}{character, the path to the folder containing the variables.}
 
 \item{corel}{table, output of the function \strong{variableCorrelation}.}
+
+\item{original_format}{character, indicates the format of the layers.}
 }
 \value{
 This function return a table informing the contribution of each
