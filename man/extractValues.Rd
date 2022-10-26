@@ -9,7 +9,8 @@ extractValues(
   occ,
   location = "species",
   lon = "decimalLongitude",
-  lat = "decimalLatitude"
+  lat = "decimalLatitude",
+  original_format = ".asc"
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ default is "species".}
 
 \item{lat}{character, name of the latitude column, default is default is
 "decimalLatitude".}
+
+\item{original_format}{character, indicates the format of the layers.}
 }
 \value{
 This function returns the values for variables in each point.

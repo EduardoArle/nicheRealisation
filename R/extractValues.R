@@ -13,17 +13,19 @@
 #' "decimalLongitude".
 #' @param lat character, name of the latitude column, default is default is 
 #' "decimalLatitude".
+#' @param original_format character, indicates the format of the layers.
 #' @return This function returns the values for variables in each point.
 #' @export
 extractValues <- function(path,occ,location="species",
-                          lon="decimalLongitude",lat="decimalLatitude") {
+                          lon="decimalLongitude",lat="decimalLatitude",
+                          original_format = ".asc") {
   
   t <- giveOcc(occ,location,lon,lat)
   t2 <- occSpatialPoints(t)
   
   oldwd <- getwd()
   setwd(path)
-  variables <- stack(list.files(pattern = ".bil$"))
+  variables <- stack(list.files(pattern = original_format))
   setwd(oldwd)
   
   values <- extract(variables,t2)
