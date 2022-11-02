@@ -4,7 +4,7 @@
 \alias{variablePreparation}
 \title{variablePreparation}
 \usage{
-variablePreparation(new_path, var_cont, th = 10)
+variablePreparation(new_path, var_cont, th = 10, original_format = ".asc")
 }
 \arguments{
 \item{new_path}{character, the path to the folder containing the
@@ -15,6 +15,8 @@ maxent model, the output of \strong{variableContribution}.}
 
 \item{th}{numeric, threshold of variable contribution to the model. Default
 is 10\%.}
+
+\item{original_format}{character, indicates the format of the layers.}
 }
 \value{
 This function returns a raster stack containing the variables that

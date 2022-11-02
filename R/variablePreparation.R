@@ -10,14 +10,15 @@
 #'maxent model, the output of **variableContribution**.
 #' @param th numeric, threshold of variable contribution to the model. Default
 #' is 10%.
+#' @param original_format character, indicates the format of the layers.
 #' @return This function returns a raster stack containing the variables that
 #' contributed to the model more than the selected threshold (in percentage).
 #' @export
-variablePreparation <- function(new_path,var_cont,th = 10){
+variablePreparation <- function(new_path, var_cont ,th = 10, original_format = ".asc"){
   
   oldwd <- getwd()
   setwd(new_path)
-  variables <- stack(list.files(pattern = ".tif$"))
+  variables <- stack(list.files(pattern = original_format))
   var_cont2 <- var_cont[which(var_cont$contribution >= th),]
   variables2 <- variables[[which(names(variables) %in% var_cont2$var)]]
   setwd(oldwd)

@@ -22,5 +22,6 @@ Imports:
     bRacatus,
     graphics,
     rgeos,
+    rJava,
     sp,
     usdm

@@ -26,8 +26,8 @@ variableStandardisation <- function(original_path, new_path, original_format = "
     var3 <- var2 / sd_var
     
     setwd(new_path)
-    writeRaster(var3, filename = paste0(names(var3),".tif"), 
-                format="GTiff")
+    writeRaster(var3, filename = paste0(names(var3),".asc"), 
+                format="ascii")
   }
   setwd(oldwd)
 }
