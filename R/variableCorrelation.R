@@ -14,7 +14,7 @@
 #' @export
 variableCorrelation <- function(occ, path, th = 0.7, original_format = ".asc"){
   #get values of all variables in the occurrence points locations
-  vars <- extractValues(path, occ_clean)
+  vars <- extractValues(path, occ_clean, original_format = original_format)
   vars2 <- vars[, -which(names(vars) %in% names(occ_clean))]
   if(length(unique(which(is.na(vars2)))) != 0){
     vars3 <- vars2[-is.na(vars2), ]
